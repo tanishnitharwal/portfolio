@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Vance | High-Performance C++ & Systems Engineer</title>
+  <meta name="description" content="Personal portfolio of Alex Vance — Systems Engineer, High-Performance C++20 Developer, and WebAssembly Architect crafting zero-cost abstractions and modern interactive web experiences.">
+  <meta name="keywords" content="C++, WebAssembly, Systems Developer, Portfolio, Software Engineer, Performance, SIMD, Modern Web">
+  <meta name="author" content="Alex Vance">
+
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:title" content="Alex Vance | High-Performance C++ & Systems Engineer">
+  <meta property="og:description" content="Explore high-speed C++ WebAssembly simulations, Mandelbrot compute engines, and modern systems architecture.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon / SVG Icon -->
+  <link rel="icon" type="image/svg+xml" href="assets/avatar.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Background Mesh Orbs -->
+  <div class="ambient-glow-mesh" aria-hidden="true">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+  </div>
+
+  <!-- ==============================================================================
+       NAVIGATION BAR
+       ============================================================================== -->
+  <header>
+    <nav class="navbar" id="mainNavbar" aria-label="Main Navigation">
+      <div class="nav-container">
+        <a href="#hero" class="nav-brand">
+          <div class="brand-logo">
+            <span>&lt;/&gt;</span>
+          </div>
+          <span class="brand-text">Alex<span>.Vance</span></span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#cpp-showcase" class="nav-link">C++ Lab <span style="color: var(--accent-emerald); font-size: 0.75rem;">(WASM)</span></a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Action Items -->
+        <div class="nav-actions">
+          <a href="#cpp-showcase" class="btn btn-sm btn-primary" style="display: none; @media(min-width: 768px){ display: inline-flex; }">
+            <span>Live C++ Demo</span>
+          </a>
+          <a href="https://github.com/alexvance" target="_blank" rel="noopener" class="btn btn-sm btn-glass btn-icon" title="GitHub Profile">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==============================================================================
+       1. HERO SECTION
+       ============================================================================== -->
+  <main>
+    <section class="hero-section" id="hero">
+      <!-- Background Interactive Kinetic Particles Canvas -->
+      <canvas id="particlesCanvas" aria-hidden="true"></canvas>
+
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Left Column: Copy & CTAs -->
+          <div class="hero-content">
+            <div class="hero-status-pill">
+              <span class="radar-dot"></span>
+              <span>Available for Systems & C++ Projects</span>
+            </div>
+
+            <h1 class="hero-title">
+              Engineering High-Performance <br>
+              <span class="text-gradient">Software & Systems</span>
+            </h1>
+
+            <div style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-main);">
+              I'm a <span class="hero-typing-wrap"><span id="typingText"></span><span class="cursor-blink">&nbsp;</span></span>
+            </div>
+
+            <p class="hero-description">
+              Specializing in low-level C++20 architecture, zero-cost abstractions, multi-threaded algorithms, and high-throughput WebAssembly modules for mission-critical web applications.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#cpp-showcase" class="btn btn-primary">
+                <span>Explore C++ Lab</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </a>
+              <a href="#projects" class="btn btn-glass">
+                <span>View Projects</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#contact" class="btn btn-glass">
+                <span>Get in Touch</span>
+              </a>
+            </div>
+
+            <!-- Key Metric Strip -->
+            <div class="hero-stats-strip">
+              <div class="stat-item">
+                <div class="stat-number">
+                  <span class="counter-val" data-target="5">0</span><span>+</span>
+                </div>
+                <div class="stat-label">Years of Experience</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">
+                  <span class="counter-val" data-target="30">0</span><span>+</span>
+                </div>
+                <div class="stat-label">High-Performance Projects</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">
+                  <span class="counter-val" data-target="99.9" data-decimal="true">0</span><span>%</span>
+                </div>
+                <div class="stat-label">Optimization & Uptime</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: 3D Holographic Card & Avatar -->
+          <div class="hero-visual">
+            <div class="hero-avatar-card" id="heroAvatarCard">
+              <img src="assets/avatar.svg" alt="Alex Vance Developer Avatar" class="hero-avatar-img">
+              
+              <!-- Floating Tech Badges -->
+              <div class="floating-badge badge-cpp">
+                <span>⚡</span> Modern C++20
+              </div>
+              <div class="floating-badge badge-wasm">
+                <span>🌐</span> WebAssembly
+              </div>
+              <div class="floating-badge badge-perf">
+                <span>🚀</span> 60 FPS SIMD
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================================
+         2. ABOUT SECTION
+         ============================================================================== -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <span>👤</span> About Me
+          </div>
+          <h2 class="section-title">Architecting at the <span class="text-gradient">Hardware & Web</span> Boundary</h2>
+          <p class="section-subtitle">
+            Bridging the gap between ultra-fast native C++ systems engineering and modern browser experiences.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          
+          <!-- Profile Card -->
+          <div class="glass-card about-profile-card">
+            <div class="profile-avatar-wrap">
+              <img src="assets/avatar.svg" alt="Alex Vance">
+            </div>
+            <h3 class="profile-name">Alex Vance</h3>
+            <p class="profile-role">&lt;Systems & Full-Stack Engineer /&gt;</p>
+
+            <ul class="profile-details-list">
+              <li><span class="label">Location:</span> <span class="val">San Francisco, CA / Remote</span></li>
+              <li><span class="label">Primary Stack:</span> <span class="val">C++20, WASM, JavaScript, Linux</span></li>
+              <li><span class="label">Specialization:</span> <span class="val">High-Performance Algorithms</span></li>
+              <li><span class="label">Education:</span> <span class="val">B.S. in Computer Science</span></li>
+              <li><span class="label">Availability:</span> <span class="val" style="color: var(--accent-emerald);">Open for Opportunities</span></li>
+            </ul>
+
+            <a href="#contact" class="btn btn-primary" style="width: 100%;">
+              <span>Download CV / Resume</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- Interactive Tabs & Story -->
+          <div class="glass-card about-content-card">
+            <div class="tabs-nav" role="tablist">
+              <button class="tab-btn active" data-tab="tab-story" role="tab">My Story</button>
+              <button class="tab-btn" data-tab="tab-experience" role="tab">Experience & Milestones</button>
+              <button class="tab-btn" data-tab="tab-principles" role="tab">Core Principles</button>
+            </div>
+
+            <!-- Tab 1: Story -->
+            <div class="tab-pane active" id="tab-story">
+              <p class="about-bio-p">
+                I am a systems developer and software engineer driven by an obsession with compute efficiency, cache locality, and zero-cost abstractions. From crafting lock-free concurrent memory structures in C++ to porting algorithmic physics engines into browsers via WebAssembly, I build software that maximizes throughput.
+              </p>
+              <p class="about-bio-p">
+                My background spans native backend microservices, real-time computer graphics shaders, and modern glassmorphic web frontends. I believe that modern web applications do not have to sacrifice performance: with the right architecture, C++ and WebAssembly provide near-native computational speeds right inside any modern browser.
+              </p>
+
+              <div class="core-pillars-grid">
+                <div class="pillar-card">
+                  <div class="pillar-icon">⚡</div>
+                  <div class="pillar-title">Low-Level Mastery</div>
+                  <div class="pillar-desc">Deep knowledge of memory models, cache lines, SIMD intrinsics, and pointer arithmetic.</div>
+                </div>
+                <div class="pillar-card">
+                  <div class="pillar-icon">🌐</div>
+                  <div class="pillar-title">WebAssembly Bridge</div>
+                  <div class="pillar-desc">Connecting raw C++ byte arrays directly with HTML5 Canvas and typed arrays for 60 FPS visuals.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: Experience Timeline -->
+            <div class="tab-pane" id="tab-experience">
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-period">2023 - PRESENT</div>
+                  <h4 class="timeline-role">Lead Systems & WebAssembly Engineer</h4>
+                  <div class="timeline-company">Aether Computing Labs</div>
+                  <p class="timeline-desc">Architecting low-latency browser-based analytical tools, reducing simulation compute time by 78% utilizing C++ WebAssembly shared memory pipelines.</p>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-period">2021 - 2023</div>
+                  <h4 class="timeline-role">High-Performance C++ Developer</h4>
+                  <div class="timeline-company">Nexus Distributed Systems</div>
+                  <p class="timeline-desc">Engineered lock-free message queues and in-memory key-value cache engines in C++20 capable of handling 3.4M queries per second under 1 µs latency.</p>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-period">2019 - 2021</div>
+                  <h4 class="timeline-role">Full-Stack & Graphics Developer</h4>
+                  <div class="timeline-company">Vanguard Interactive</div>
+                  <p class="timeline-desc">Built interactive data visualization applications, WebGL shaders, and high-concurrency Node/C++ native addon microservices.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 3: Principles -->
+            <div class="tab-pane" id="tab-principles">
+              <div class="core-pillars-grid" style="margin-top: 0; grid-template-columns: 1fr;">
+                <div class="pillar-card">
+                  <h4 class="pillar-title" style="color: var(--accent-cyan);">1. Cache Locality & Data-Oriented Design</h4>
+                  <p class="pillar-desc">Structure-of-Arrays (SoA) layout to prevent cache misses and maximize L1/L2 instruction pipeline efficiency.</p>
+                </div>
+                <div class="pillar-card">
+                  <h4 class="pillar-title" style="color: var(--accent-emerald);">2. Zero-Cost Abstractions</h4>
+                  <p class="pillar-desc">Compile-time template metaprogramming and constexpr evaluations that execute before runtime without overhead.</p>
+                </div>
+                <div class="pillar-card">
+                  <h4 class="pillar-title" style="color: var(--accent-violet);">3. Seamless Web Interoperability</h4>
+                  <p class="pillar-desc">Building elegant, accessible, and responsive user interfaces that tap directly into high-speed C++ computational backends.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================================
+         3. SKILLS SECTION
+         ============================================================================== -->
+    <section id="skills" class="skills-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <span>⚙️</span> Technical Expertise
+          </div>
+          <h2 class="section-title">Skills & <span class="text-gradient">Technology Stack</span></h2>
+          <p class="section-subtitle">
+            A comprehensive overview of my core engineering capabilities across low-level systems, WebAssembly, and modern web applications.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="skills-filter-bar">
+          <button class="btn btn-sm btn-glass skills-filter-btn active" data-filter="all">All Disciplines</button>
+          <button class="btn btn-sm btn-glass skills-filter-btn" data-filter="systems">Systems & C++</button>
+          <button class="btn btn-sm btn-glass skills-filter-btn" data-filter="web">Modern Web</button>
+          <button class="btn btn-sm btn-glass skills-filter-btn" data-filter="tools">DevOps & Architecture</button>
+        </div>
+
+        <!-- Interactive Skills Grid -->
+        <div class="skills-grid" id="skillsGrid">
+          
+          <!-- Skill: C++20 -->
+          <div class="skill-card" data-category="systems">
+            <div class="skill-card-top">
+              <div class="skill-icon-name">
+                <div class="skill-icon-box">⚡</div>
+                <div class="skill-name">C++20 / C++23</div>
+              </div>
+              <span class="skill-level-badge">96%</span>
+            </div>
+            <div class="skill-meter-track">
+              <div class="skill-meter-fill" style="width: 96%;"></div>
+            </div>
+            <div class="skill-tags-row">
+              <span class="skill-micro-tag">Templates</span>
+              <span class="skill-micro-tag">Concepts</span>
+              <span class="skill-micro-tag">SIMD/AVX</span>
+              <span class="skill-micro-tag">Atomics</span>
+            </div>
+          </div>
+
+          <!-- Skill: WebAssembly -->
+          <div class="skill-card" data-category="systems web">
+            <div class="skill-card-top">
+              <div class="skill-icon-name">
+                <div class="skill-icon-box">🌐</div>
+                <div class="skill-name">WebAssembly (WASM)</div>
+              </div>
+              <span class="skill-level-badge">92%</span>
+            </div>
+            <div class="skill-meter-track">
+              <div class="skill-meter-fill" style="width: 92%;"></div>
+            </div>
+            <div class="skill-tags-row">
+              <span class="skill-micro-tag">Emscripten</span>
+              <span class="skill-micro-tag">Shared Memory</span>
+              <span class="skill-micro-tag">Wasm Binary</span>
+            </div>
+          </div>
+
+          <!-- Skill: JavaScript ES6+ & TypeScript -->
+          <div class="skill-card" data-category="web">
+            <div class="skill-card-top">
+              <div class="skill-icon-name">
+                <div class="skill-icon-box">🟨</div>
+                <div class="skill-name">JavaScript & TypeScript</div>
+              </div>
+              <span class="skill-level-badge">94%</span>
+            </div>
+            <div class="skill-meter-track">
+              <div class="skill-meter-fill" style="width: 94%;"></div>
+            </div>
+            <div class="skill-tags-row">
+              <span class="skill-micro-tag">Async/Await</span>
+              <span class="skill-micro-tag">Typed Arrays</span>
+              <span class="skill-micro-tag">DOM / ESNext</span>
+            </div>
+          </div>
+
+          <!-- Skill: HTML5 & Modern CSS -->
+          <div class="skill-card" data-category="web">
+            <div class="skill-card-top">
+              <div class="skill-icon-name">
+                <div class="skill-icon-box">🎨</div>
+                <div class="skill-name">HTML5 & CSS3 Glassmorphism</div>
+              </div>
+              <span class="skill-level-badge">95%</span>
+            </div>
+            <div class="skill-meter-track">
+              <div class="skill-meter-fill" style="width: 95%;"></div>
+            </div>
+            <div class="skill-tags-row">
+              <span class="skill-micro-tag">CSS Grid/Flexbox</span>
+              <span class="skill-micro-tag">Backdrop Filter</span>
+              <span class="skill-micro-tag">Variables</span>
+            </div>
+          </div>
+
+          <!-- Skill: Concurrency & Multithreading -->
+          <div class="skill-card" data-category="systems">
+            <div class="skill-card-top">
+              <div class="skill-icon-name">
+                <div class="skill-icon-box">🧵</div>
+                <div class="skill-name">Multithreading & Lock-Free</div>
+              </div>
+              <span class="skill-level-badge">90%</span>
+            </div>
+            <div class="skill-meter-track">
+              <div class="skill-meter-fill" style="width: 90%;"></div>
+            </div>
+            <div class="skill-tags-row">
+              <span class="skill-micro-tag">std::jthread</span>
+              <span class="skill-micro-tag">Hazard Pointers</span>
+              <span class="skill-micro-tag">Memory Fences</span>
+            </div>
+          </div>
+
+          <!-- Skill: Canvas API & WebGL Graphics -->
+          <div class="skill-card" data-category="web systems">
+            <div class="skill-card-top">
+              <div class="skill-icon-name">
+                <div class="skill-icon-box">🎮</div>
+                <div class="skill-name">HTML5 Canvas & WebGL</div>
+              </div>
+              <span class="skill-level-badge">88%</span>
+            </div>
+            <div class="skill-meter-track">
+              <div class="skill-meter-fill" style="width: 88%;"></div>
+            </div>
+            <div class="skill-tags-row">
+              <span class="skill-micro-tag">Zero-Copy Pixels</span>
+              <span class="skill-micro-tag">Shaders</span>
+              <span class="skill-micro-tag">Particle Physics</span>
+            </div>
+          </div>
+
+          <!-- Skill: Build Systems & CMake -->
+          <div class="skill-card" data-category="tools">
+            <div class="skill-card-top">
+              <div class="skill-icon-name">
+                <div class="skill-icon-box">🛠️</div>
+                <div class="skill-name">CMake, Make & GCC/Clang</div>
+              </div>
+              <span class="skill-level-badge">91%</span>
+            </div>
+            <div class="skill-meter-track">
+              <div class="skill-meter-fill" style="width: 91%;"></div>
+            </div>
+            <div class="skill-tags-row">
+              <span class="skill-micro-tag">Cross-Compilation</span>
+              <span class="skill-micro-tag">Optimizations -O3</span>
+              <span class="skill-micro-tag">gdb/Valgrind</span>
+            </div>
+          </div>
+
+          <!-- Skill: Microservices & Networking -->
+          <div class="skill-card" data-category="tools systems">
+            <div class="skill-card-top">
+              <div class="skill-icon-name">
+                <div class="skill-icon-box">🔌</div>
+                <div class="skill-name">REST Sockets & Microservices</div>
+              </div>
+              <span class="skill-level-badge">89%</span>
+            </div>
+            <div class="skill-meter-track">
+              <div class="skill-meter-fill" style="width: 89%;"></div>
+            </div>
+            <div class="skill-tags-row">
+              <span class="skill-micro-tag">Winsock2</span>
+              <span class="skill-micro-tag">POSIX Sockets</span>
+              <span class="skill-micro-tag">Zero-Copy JSON</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================================
+         4. PROJECTS SECTION
+         ============================================================================== -->
+    <section id="projects" class="projects-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <span>🚀</span> Portfolio Showcase
+          </div>
+          <h2 class="section-title">Featured <span class="text-gradient">Engineering Projects</span></h2>
+          <p class="section-subtitle">
+            Selected systems, high-performance C++ compute engines, and modern interactive web tools.
+          </p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="projects-filter-bar">
+          <button class="btn btn-sm btn-glass project-filter-btn active" data-filter="all">All Projects</button>
+          <button class="btn btn-sm btn-glass project-filter-btn" data-filter="cpp">C++ / Systems</button>
+          <button class="btn btn-sm btn-glass project-filter-btn" data-filter="web">Web & Full-Stack</button>
+          <button class="btn btn-sm btn-glass project-filter-btn" data-filter="graphics">Computer Graphics</button>
+        </div>
+
+        <!-- Projects Grid (Populated dynamically via projects.js) -->
+        <div class="projects-grid" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ==============================================================================
+         5. ⭐ C++ & WEBASSEMBLY INTERACTIVE LAB (CORE SHOWCASE)
+         ============================================================================== -->
+    <section id="cpp-showcase" class="cpp-lab-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag" style="border-color: var(--accent-emerald); color: var(--accent-emerald); background: rgba(16, 185, 129, 0.1);">
+            <span>⚡</span> C++ & WebAssembly Engine
+          </div>
+          <h2 class="section-title">Interactive <span class="text-gradient">C++ Compute Lab</span></h2>
+          <p class="section-subtitle">
+            Experience the speed of C++ executed directly in your browser. Toggle between real-time fractal math, gravitational particle dynamics, and side-by-side performance benchmarks.
+          </p>
+        </div>
+
+        <div class="cpp-lab-wrap">
+          
+          <!-- Top Bar: Status & Mode Switcher -->
+          <div class="lab-header-bar">
+            <div class="lab-engine-indicator" id="labEngineStatus">
+              <span class="radar-dot"></span>
+              <span>Initializing C++ WebAssembly Engine...</span>
+            </div>
+
+            <div class="lab-mode-tabs">
+              <button class="lab-mode-tab active" data-mode="fractal">Mandelbrot Fractal</button>
+              <button class="lab-mode-tab" data-mode="particles">N-Body Particle Physics</button>
+            </div>
+          </div>
+
+          <!-- Main Viewport: Canvas & Controls -->
+          <div class="lab-viewport-grid">
+            
+            <!-- Canvas Viewport -->
+            <div class="canvas-container">
+              <canvas id="cppCanvas" width="480" height="300"></canvas>
+              
+              <!-- Real-time HUD -->
+              <div class="canvas-hud-overlay">
+                <div class="hud-pill">
+                  <span>FPS:</span> <span class="val" id="hudFpsVal">60</span>
+                </div>
+                <div class="hud-pill">
+                  <span>Frame Compute:</span> <span class="val" id="hudTimeVal">0.0 ms</span>
+                </div>
+                <div class="hud-pill">
+                  <span>Throughput:</span> <span class="val" id="hudOpsVal">0.0 M/s</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls Panel -->
+            <div class="lab-controls-panel">
+              
+              <!-- Fractal Specific Controls -->
+              <div id="fractalControls" style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="control-group">
+                  <div class="control-label-row">
+                    <span>Zoom Magnification</span>
+                    <span class="val" id="zoomVal">1.0x</span>
+                  </div>
+                  <input type="range" class="slider-custom" id="zoomSlider" min="0.5" max="30.0" step="0.5" value="1.0">
+                </div>
+
+                <div class="control-group">
+                  <div class="control-label-row">
+                    <span>Max Escape Iterations</span>
+                    <span class="val" id="iterVal">120</span>
+                  </div>
+                  <input type="range" class="slider-custom" id="iterSlider" min="30" max="600" step="10" value="120">
+                </div>
+
+                <div class="control-group">
+                  <div class="control-label-row">
+                    <span>Color Palette Scheme</span>
+                  </div>
+                  <select class="select-custom" id="paletteSelect">
+                    <option value="0">Emerald Cyber Neon</option>
+                    <option value="1">Electric Violet & Blue</option>
+                    <option value="2">Solar Amber Flare</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Particle Specific Controls -->
+              <div id="particleControls" style="display: none; flex-direction: column; gap: 16px;">
+                <div class="control-group">
+                  <div class="control-label-row">
+                    <span>Entity Count</span>
+                    <span class="val" id="particleVal">1200</span>
+                  </div>
+                  <input type="range" class="slider-custom" id="particleSlider" min="200" max="3000" step="100" value="1200">
+                </div>
+
+                <div class="control-group">
+                  <div class="control-label-row">
+                    <span>Gravity Attractor Strength</span>
+                    <span class="val" id="gravityVal">1.0</span>
+                  </div>
+                  <input type="range" class="slider-custom" id="gravitySlider" min="0.0" max="4.0" step="0.2" value="1.0">
+                </div>
+              </div>
+
+              <!-- Interaction Hint -->
+              <div style="font-size: 0.8rem; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--glass-border);">
+                💡 <strong>Mouse Interaction:</strong> Click or drag on the viewport to pan fractal focus or attract/repel particles in real time.
+              </div>
+
+              <div style="display: flex; gap: 10px;">
+                <button class="btn btn-sm btn-glass" id="resetControlsBtn" style="flex: 1;">
+                  <span>Reset View</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Real-Time Benchmark Duel: C++ WASM vs Pure JavaScript -->
+          <div class="benchmark-duel-card">
+            <div class="duel-header">
+              <div class="duel-title">
+                <span>⚡</span> Live Benchmark: C++ WebAssembly vs Pure JavaScript
+              </div>
+              <div class="duel-multiplier-pill" id="duelMultiplier">
+                Ready to Benchmark
+              </div>
+            </div>
+
+            <div class="duel-bars-container">
+              <!-- C++ WASM Bar -->
+              <div class="duel-bar-row">
+                <div class="duel-label">
+                  <span style="color: var(--accent-emerald);">●</span> C++ (WASM)
+                </div>
+                <div class="duel-progress-track">
+                  <div class="duel-progress-fill fill-cpp" id="duelCppBar" style="width: 100%;"></div>
+                </div>
+                <div class="duel-time" id="duelCppTime" style="color: var(--accent-emerald);">-- ms</div>
+              </div>
+
+              <!-- JavaScript Bar -->
+              <div class="duel-bar-row">
+                <div class="duel-label">
+                  <span style="color: #f59e0b;">●</span> Pure JavaScript
+                </div>
+                <div class="duel-progress-track">
+                  <div class="duel-progress-fill fill-js" id="duelJsBar" style="width: 100%;"></div>
+                </div>
+                <div class="duel-time" id="duelJsTime" style="color: #f59e0b;">-- ms</div>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 18px; flex-wrap: wrap; gap: 12px;">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">
+                Test computes 5,000,000 prime numbers and 200,000 complex iteration polynomials.
+              </span>
+              <button class="btn btn-sm btn-primary" id="runBenchmarkBtn">
+                <span>Run Real-Time Benchmark</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Embedded C++ Source Code Viewer -->
+          <div class="code-viewer-card">
+            <div class="code-viewer-top">
+              <div class="code-window-dots">
+                <span class="code-dot code-dot-red"></span>
+                <span class="code-dot code-dot-yellow"></span>
+                <span class="code-dot code-dot-green"></span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-left: 10px;">cpp/engine.cpp</span>
+              </div>
+              <button class="btn btn-sm btn-glass" id="copyCodeBtn" style="padding: 4px 10px; font-size: 0.75rem;">
+                <span>Copy C++ Code</span>
+              </button>
+            </div>
+            <div class="code-viewer-body">
+              <pre id="cppSourceSnippet"><code>// High-Performance Mandelbrot Kernel (C++20 / WebAssembly SIMD)
+extern "C" EMSCRIPTEN_KEEPALIVE
+int compute_mandelbrot_pixel(double cx, double cy, int max_iter) {
+    double zx = 0.0, zy = 0.0;
+    double zx2 = 0.0, zy2 = 0.0;
+    int iter = 0;
+
+    // Unrolled inner loop for instruction-level parallelism
+    while (zx2 + zy2 <= 4.0 && iter < max_iter) {
+        zy = 2.0 * zx * zy + cy;
+        zx = zx2 - zy2 + cx;
+        zx2 = zx * zx;
+        zy2 = zy * zy;
+        iter++;
+    }
+    return iter;
+}</code></pre>
+            </div>
+          </div>
+
+          <!-- C++ Backend Microservice Telemetry Status -->
+          <div style="margin-top: 24px; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(15, 23, 42, 0.7); border: 1px solid var(--glass-border); border-radius: var(--radius-md); flex-wrap: wrap; gap: 12px;">
+            <div id="cppServerBadge" style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; font-family: var(--font-mono);">
+              <span class="radar-dot"></span>
+              <span>Checking C++ Native REST Microservice...</span>
+            </div>
+            <button class="btn btn-sm btn-glass" id="pingServerBtn">
+              <span>Ping C++ Microservice</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================================
+         6. CONTACT SECTION
+         ============================================================================== -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <span>📬</span> Let's Connect
+          </div>
+          <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
+          <p class="section-subtitle">
+            Have a high-performance C++ project, WebAssembly application, or systems architecture opportunity? Let's build something remarkable.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          
+          <!-- Contact Info -->
+          <div class="glass-card contact-info-card">
+            <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 20px;">Direct Contact</h3>
+
+            <div class="contact-method-item">
+              <div class="contact-method-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="contact-method-details">
+                <h4>Email</h4>
+                <p>alex.vance.dev@proton.me</p>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-method-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div class="contact-method-details">
+                <h4>Location</h4>
+                <p>San Francisco, California</p>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-method-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="contact-method-details">
+                <h4>Timezone</h4>
+                <p>Pacific Time (UTC-7/8)</p>
+              </div>
+            </div>
+
+            <div style="border-top: 1px solid var(--glass-border); padding-top: 24px; margin-top: 24px;">
+              <button class="btn btn-glass" id="copyEmailBtn" style="width: 100%;">
+                <span>Copy Email Address</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="glass-card contact-form-card">
+            <form id="contactForm" novalidate>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label" for="contactName">Your Name *</label>
+                  <input type="text" id="contactName" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contactEmail">Your Email *</label>
+                  <input type="email" id="contactEmail" class="form-input" placeholder="sarah@company.com" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contactSubject">Inquiry Topic</label>
+                <select id="contactSubject" class="form-select">
+                  <option value="systems">High-Performance C++ / Systems Architecture</option>
+                  <option value="wasm">WebAssembly Application Development</option>
+                  <option value="consulting">Performance Optimization & Consulting</option>
+                  <option value="other">General Inquiries / Collaboration</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                  <label class="form-label" for="contactMessage" style="margin-bottom: 0;">Project Details / Message *</label>
+                  <span id="charCount" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim);">0 / 500</span>
+                </div>
+                <textarea id="contactMessage" class="form-textarea" placeholder="Describe your project, performance requirements, or engineering challenge..." maxlength="500" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="contactSubmitBtn" style="width: 100%;">
+                <span>Transmit Message</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==============================================================================
+       FOOTER
+       ============================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top-row">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <div class="brand-logo" style="width: 32px; height: 32px; font-size: 0.9rem;">&lt;/&gt;</div>
+            <span style="font-size: 1.15rem; font-weight: 700;">Alex Vance</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.88rem; max-width: 380px;">
+            Crafting zero-cost abstractions, multi-threaded C++ architectures, and modern high-end WebAssembly applications.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 16px;">
+          <a href="#about" class="nav-link" style="padding: 4px 8px;">About</a>
+          <a href="#skills" class="nav-link" style="padding: 4px 8px;">Skills</a>
+          <a href="#projects" class="nav-link" style="padding: 4px 8px;">Projects</a>
+          <a href="#cpp-showcase" class="nav-link" style="padding: 4px 8px;">C++ Lab</a>
+          <a href="#contact" class="nav-link" style="padding: 4px 8px;">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>
+          © 2026 Alex Vance. Engineered with <span style="color: var(--accent-emerald);">C++20</span>, <span style="color: var(--accent-cyan);">WebAssembly</span> & Modern Vanilla CSS.
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.78rem;">
+          Status: <span style="color: var(--accent-emerald);">● All Systems Nominal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==============================================================================
+       MODALS & FLOATING TOASTS
+       ============================================================================== -->
+  <!-- Project Deep-Dive Modal -->
+  <div class="modal-backdrop" id="projectModal" aria-modal="true" role="dialog">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-content-body" id="modalContent">
+        <!-- Injected dynamically via projects.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Back To Top Floating Button -->
+  <button class="back-to-top" id="backToTopBtn" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/particles.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/cpp-wasm-bridge.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
